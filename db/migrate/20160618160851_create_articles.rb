@@ -4,11 +4,7 @@ class CreateArticles < ActiveRecord::Migration
       t.string :text
       t.string :title
       t.timestamps null: false
-      t.string :user_login
+      t.references :user, index: true, foreign_key: true
     end
-    execute 'ALTER TABLE articles
-            ADD CONSTRAINT articles_to_users
-            FOREIGN KEY (user_login)
-            REFERENCES users (login)'
   end
 end

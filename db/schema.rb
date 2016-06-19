@@ -18,23 +18,25 @@ ActiveRecord::Schema.define(version: 20160618160917) do
     t.string   "title",      limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
-    t.string   "user_login", limit: 255
+    t.integer  "user_id",    limit: 4
   end
 
-  add_index "articles", ["user_login"], name: "articles_to_users", using: :btree
+  add_index "articles", ["user_id"], name: "index_articles_on_user_id", using: :btree
 
   create_table "comments", force: :cascade do |t|
     t.string   "text",       limit: 255
     t.string   "user_login", limit: 255
+    t.integer  "user_id",    limit: 4
     t.integer  "article_id", limit: 4
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
   end
 
   add_index "comments", ["article_id"], name: "index_comments_on_article_id", using: :btree
-  add_index "comments", ["user_login"], name: "comments_to_users", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
-  create_table "users", primary_key: "login", force: :cascade do |t|
+  create_table "users", force: :cascade do |t|
+    t.string   "login",         limit: 255, null: false
     t.string   "first_name",    limit: 255, null: false
     t.string   "last_name",     limit: 255, null: false
     t.string   "password_hash", limit: 255, null: false
@@ -42,7 +44,7 @@ ActiveRecord::Schema.define(version: 20160618160917) do
     t.datetime "updated_at",                null: false
   end
 
-  add_foreign_key "articles", "users", column: "user_login", primary_key: "login", name: "articles_to_users"
+  add_foreign_key "articles", "users"
   add_foreign_key "comments", "articles"
-  add_foreign_key "comments", "users", column: "user_login", primary_key: "login", name: "comments_to_users"
+  add_foreign_key "comments", "users"
 end

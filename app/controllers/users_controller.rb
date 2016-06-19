@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    @user
   end
 
   # GET /users/1
@@ -26,9 +26,13 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      session[:login] = @login
-      redirect_to
+      flash[:notice] = "You signed up successfully"
+      flash[:color]= "valid"
+    else
+      flash[:notice] = "Form is invalid"
+      flash[:color]= "invalid"
     end
+    render "new"
   end
 
   # PATCH/PUT /users/1
@@ -63,6 +67,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.fetch(:user, {})
+      params.require(:user).permit(:login,:first_name,:last_name,:password)
     end
 end
