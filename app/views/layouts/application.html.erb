@@ -7,10 +7,45 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<header>
+  <div class="navbar navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <span class="navbar-brand">Hello, <% if current_user  %>
+              <%=link_to current_user.login, root_path %>
+          <% else %>
+          Anonymous
+              <%end%>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="navbar-nav navbar-right">
 
-<div class="content">
+          <% if current_user  %>
+              <li>
+                <%= link_to 'Sign out', signout_path, method: 'delete', class: 'navbar-brand' %>
+              </li>
+          <% else %>
+              <li>
+                <%= link_to 'Sign up', signup_path, class: 'navbar-brand' %>
+              </li>
+              <li>
+              <%= link_to 'Sign in', signin_path, class: 'navbar-brand' %>
+              </li>
+
+          <% end %>
+
+
+        </ul>
+
+      </div>
+    </div>
+  </div>
+</header>
+<hr/>
+<div class="container body-content">
+  <%= yield %>
 </div>
-<%= yield %>
+
 
 </body>
 </html>

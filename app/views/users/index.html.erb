@@ -1,27 +1,4 @@
 <p id="notice"><%= notice %></p>
 
-<% if current_user %>
-<%end%>
-<h1>Listing Users</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-  </tbody>
-</table>
-
-<br>
-<% if current_user  %>
-    Hello,<%=current_user.login %>
-    <%= link_to 'Sign out', signout_path, method: 'delete' %>
-    <% else %>
-    <%= link_to 'Sign up', signup_path %>
-    <%= link_to 'Sign in', signin_path %>
-
-<% end %>
 

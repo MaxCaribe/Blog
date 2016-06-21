@@ -1,27 +1,28 @@
-<h1>New User</h1>
-
 <%= form_for(@user) do |f| %>
-    <p>
-      <%=f.label :login %>
-      <%=f.text_field :login %>
+
+    <p class='col-sm-offset-5'>
+      <%=f.label :login, class:'control-label' %>
+      <%=f.text_field :login, class: 'form-control' %>
     </p>
-    <p>
-      <%=f.label :first_name %>
-      <%=f.text_field :first_name %>
+    <p class='col-sm-offset-5'>
+      <%=f.label :first_name%>
+      <%=f.text_field :first_name, class: 'form-control' %>
     </p>
-    <p>
+    <p class='col-sm-offset-5'>
       <%=f.label :last_name %>
-      <%=f.text_field :last_name %>
+      <%=f.text_field :last_name, class: 'form-control' %>
     </p>
-    <p>
+    <p class='col-sm-offset-5'>
       <%=f.label :password %>
-      <%=f.password_field :password %>
+      <%=f.password_field :password, class: 'form-control' %>
     </p>
-    <p>
+    <p class='col-sm-offset-5'>
       <%=f.label :password_confirmation %>
-      <%=f.password_field :password_confirmation %>
+      <%=f.password_field :password_confirmation, class: 'form-control' %>
     </p>
-<%= f.submit 'Sign up' %>
+    <p class='col-sm-offset-6'>
+      <%= f.submit 'Sign up', class: 'btn btn-large btn-primary' %>
+    </p>
 <% end%>
 <% if @user.errors.any? %>
     <ul class="Signup_Errors">
