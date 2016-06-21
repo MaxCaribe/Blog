@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160618160917) do
+ActiveRecord::Schema.define(version: 20160620213320) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "text",       limit: 255
@@ -36,12 +36,12 @@ ActiveRecord::Schema.define(version: 20160618160917) do
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
-    t.string   "login",         limit: 255, null: false
-    t.string   "first_name",    limit: 255, null: false
-    t.string   "last_name",     limit: 255, null: false
-    t.string   "password_hash", limit: 255, null: false
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.string   "login",           limit: 255, null: false
+    t.string   "first_name",      limit: 255, null: false
+    t.string   "last_name",       limit: 255, null: false
+    t.string   "password_digest", limit: 255, null: false
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
   add_foreign_key "articles", "users"
