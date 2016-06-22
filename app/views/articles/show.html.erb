@@ -1,0 +1,11 @@
+<p id="notice"><%= notice %></p>
+<% if current_user %>
+<%= render 'images/show' %>
+<%end%>
+<% @articles.each do |article| %>
+  <%= article.text %>
+    <% if current_user && current_user.id == article.user_id %>
+      <%= button_to 'Delete article' , article_path(article.id), :method => 'delete', remote: true %>
+        <%= button_to 'Edit article' , edit_article_path(article.id), :method => 'get' %>
+    <%end%>
+<% end %>

@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
+  resources :articles
+  resources :images
   resources :users, param: :login
-  root 'users#index'
+  root 'articles#show'
   resources :sessions, only: [:new, :create, :destroy]
   match '/signup',  to: 'users#new',            via: 'get'
   match '/signin',  to: 'sessions#new',         via: 'get'

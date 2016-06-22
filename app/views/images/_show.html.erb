@@ -1,0 +1,5 @@
+<p id="notice"><%= notice %></p>
+
+<% if File.exists?("app/assets/images/"+current_user.login+'.jpg')%>
+<%= image_tag current_user.login+'.jpg' %> |
+    <%end%>
