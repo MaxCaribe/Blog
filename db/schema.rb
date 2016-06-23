@@ -11,25 +11,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160620213320) do
+ActiveRecord::Schema.define(version: 20160623142302) do
 
   create_table "articles", force: :cascade do |t|
-    t.string   "text",       limit: 255
+    t.string   "text",       limit: 10000
     t.string   "title",      limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.integer  "user_id",    limit: 4
   end
 
   add_index "articles", ["user_id"], name: "index_articles_on_user_id", using: :btree
 
   create_table "comments", force: :cascade do |t|
-    t.string   "text",       limit: 255
-    t.string   "user_login", limit: 255
+    t.string   "text",       limit: 10000
     t.integer  "user_id",    limit: 4
     t.integer  "article_id", limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "to_comment", limit: 4
   end
 
   add_index "comments", ["article_id"], name: "index_comments_on_article_id", using: :btree

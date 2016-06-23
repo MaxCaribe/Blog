@@ -1,10 +1,12 @@
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:edit, :update, :destroy]
-
+  def index
+    @articles = Article.all
+  end
   # GET /articles/1
   # GET /articles/1.json
   def show
-    @articles = Article.all
+    @article = Article.find_by(id: params[:id])
   end
 
   # GET /articles/new
@@ -38,10 +40,6 @@ class ArticlesController < ApplicationController
     respond_to do |format|
       if @article.update(article_params)
         format.html { redirect_to @article, notice: 'Article was successfully updated.' }
-        format.json { render :show, status: :ok, location: @article }
-      else
-        format.html { render :edit }
-        format.json { render json: @article.errors, status: :unprocessable_entity }
       end
     end
   end
