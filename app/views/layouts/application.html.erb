@@ -38,9 +38,13 @@
 <div class="container body-content row">
   <div class="col-md-3">
     <% if current_user %>
-        <%= render 'images/show' %>
-        <%= button_to 'New articles', new_article_path, :method => :get, class:'btn btn-xs btn-primary' %>
-        <%= button_to 'New image', new_image_path, :method => :get, class: 'btn btn-xs btn-primary' %>
+        <div>Hi, <%=current_user.login%>! </div>
+        <% if File.exists?("app/assets/images/"+current_user.login+'.jpg')%>
+            <%= image_tag current_user.login+'.jpg',class:'thumbnail' %>
+        <%end%>
+        <div><%=current_user.first_name%> <%=current_user.last_name%> </div>
+        <%= button_to 'New articles', new_article_path, :method => :get, class:'btn btn-xs btn-primary left-button' %>
+        <%= button_to 'Change photo', new_image_path, :method => :get, class: 'btn btn-xs btn-primary left-button' %>
     <%end%>
   </div>
   <div class="col-md-9">

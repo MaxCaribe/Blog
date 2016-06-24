@@ -1,21 +1,27 @@
-<p id="notice"><%= notice %></p>
+ <% @articles.each do |article| %>
+    <div id="art<%=article.id%>">
+    <div class="row">
+        <div class="article-title text-center left-float">
+          <%= article.title %> <span class="small-text">by
+          <% if File.exists?("app/assets/images/"+article.user.login+'.jpg')%>
+              <%= image_tag article.user.login+'.jpg', class: 'thumbnail inline very-small-image' %>
+          <%end%>
+          <%= article.user.first_name%> <%= article.user.last_name%> </span>
 
-  <% @articles.each do |article| %>
-      <div class>
-        <div class="article-title text-center">
-          <%= article.title %>
         </div>
         <div>
           <% if current_user && current_user.id == article.user_id %>
-              <%= button_to 'Delete article' , article_path(article.id), :method => 'delete', remote: true, class: 'btn btn-xs btn-primary' %>
-              <%= button_to 'Edit article' , edit_article_path(article.id), :method => 'get',  class: 'btn btn-xs btn-primary' %>
+              <%= button_to 'Delete article' , article_path(article.id),
+                            :method => 'delete', remote: true, data: {confirm: 'Are you sure?'} ,
+                            class: 'btn btn-xs btn-primary delete-me left-float title-button correction' %>
+              <%= button_to 'Edit article' , edit_article_path(article.id),
+                            :method => 'get',  class: 'btn btn-xs btn-primary left-float title-button correction' %>
           <%end%>
         </div>
       </div>
       <div class="mycontrol article-interval">
-        <%= article.text[0,255] %>
+        <%= article.text[0,1000] %>
         <%= link_to 'Read...', article_path(article.id), class: 'blue-color' %>
       </div>
-
-
-  <% end %>
+    </div>
+ <% end %>

@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :comments
   resources :articles
   resources :images
-  resources :users, param: :login
+  resources :users
   root 'articles#index'
   resources :sessions, only: [:new, :create, :destroy]
   match '/signup',  to: 'users#new',            via: 'get'

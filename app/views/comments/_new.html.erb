@@ -1,10 +1,11 @@
 <%= form_for Comment.new do |f| %>
     <%= f.hidden_field :article_id, :value => @article.id %>
+    <%= f.hidden_field :to_comment, :value => @to_comment %>
     <p class='col-md-12'>
       <%=f.label :text, class:'control-label' %>
-      <%=f.text_area :text, class: 'form-control width-controls height-controls' %>
+      <%=f.text_area :text, class: 'form-control width-controls col-md-12' %>
     </p>
-    <p class='col-sm-offset-6'>
+    <p class='col-sm-offset-5'>
       <%= f.submit 'Send comment', class: 'btn btn-large btn-primary' %>
     </p>
 <% end%>

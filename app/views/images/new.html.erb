@@ -1,9 +1,9 @@
 <%= form_for Image.new do |f| %>
     <div class="field">
-      <%= f.label :picture %><br>
-      <%= f.file_field :picture %>
+      <%= f.label :picture, class:'control-label' %><br>
+      <%= f.file_field :picture  %>
     </div>
     <div class="actions">
-      <%= f.submit%>
+      <%= f.submit 'Set image', class: 'btn btn-large btn-primary' %>
     </div>
 <% end %>
