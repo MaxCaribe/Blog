@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160623142302) do
+ActiveRecord::Schema.define(version: 20160630125730) do
 
   create_table "articles", force: :cascade do |t|
     t.string   "text",       limit: 10000
@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20160623142302) do
     t.string   "password_digest", limit: 255, null: false
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
+    t.string   "email",           limit: 255
   end
 
   add_foreign_key "articles", "users"
