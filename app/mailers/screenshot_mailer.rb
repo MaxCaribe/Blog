@@ -29,7 +29,6 @@ class ScreenshotMailer <  ActionMailer::Base
     }
     kit.to_file path
     attachments['filename.jpg'] = File.read(path)
-
     mail(:subject => 'Testing!',:body => 'Some text there')
   end
 end
