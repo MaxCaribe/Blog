@@ -21,7 +21,7 @@ Rails.application.configure do
       user_name: 'mailforrailsmax@gmail.com',
       password: 'caribemax',
       authentication: 'plain',
-      :openssl_verify_mode  => 'none'}
+      enable_starttls_auto: true}
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.perform_deliveries = true
 

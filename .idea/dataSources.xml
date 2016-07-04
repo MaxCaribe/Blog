@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="1994394258">
+  <component name="DataSourceManagerImpl" format="xml" hash="1136267072">
     <data-source source="LOCAL" name="Rails Blog: development" uuid="1439cfe2-edf4-4352-846b-b5ad2a04637f">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
@@ -19,14 +19,6 @@
         <property name="characterSetResults" value="utf8" />
         <property name="yearIsDateType" value="false" />
       </driver-properties>
-      <libraries>
-        <library>
-          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/mysql-connector-license.txt</url>
-        </library>
-        <library>
-          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/mysql-connector-java-5.1.35-bin.jar</url>
-        </library>
-      </libraries>
     </data-source>
   </component>
 </project>
